@@ -187,7 +187,7 @@ jobs:
 
     - name: Build localization-jetson
       run: | 
-        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
         cd ./cabot-common
@@ -244,7 +244,7 @@ jobs:
 
     - name: Build ble-scan-jetson
       run: | 
-        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
         cd ./cabot-common
