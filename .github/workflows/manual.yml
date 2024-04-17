@@ -51,7 +51,7 @@ jobs:
         git clone -b ros2 https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
-        ./build-docker.sh -p people -i -w people-nuc
+        ./build-docker.sh -p navigation -i -w people-nuc
 
   build-ros2:
     runs-on: ubuntu-20.04
