@@ -30,3 +30,115 @@ jobs:
         cd ./cabot
         ./setup-dependency.sh
         ./build-docker.sh -p people -i -w people
+
+  build-people-nuc:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Check QEMU
+      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
+
+    - name: Build cabot-people
+      run: | 
+        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        ./build-docker.sh -p people -i -w people-nuc
+
+  build-ros2:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Check QEMU
+      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
+
+    - name: Build cabot-people
+      run: | 
+        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        ./build-docker.sh -p navigation -i -w ros2
+
+  build-localization:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Check QEMU
+      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
+
+    - name: Build cabot-people
+      run: | 
+        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        ./build-docker.sh -p navigation -i -w localization
+
+  build-ble-scan:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Check QEMU
+      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
+
+    - name: Build cabot-people
+      run: | 
+        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        ./build-docker.sh -p navigation -i -w ble-scan
