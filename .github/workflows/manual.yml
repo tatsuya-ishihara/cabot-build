@@ -21,7 +21,7 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people
+    - name: Build people
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
         cd ./cabot
@@ -46,13 +46,45 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people
+    - name: Build people-nuc
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
         ./build-docker.sh -p navigation -i -w people-nuc
 
+  build-people-jetson:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Build people-jetson
+      run: | 
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-people
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
+        ./build-docker.sh -a aarch64 -p people -i -w people
+  
   build-ros2:
     runs-on: ubuntu-20.04
     steps:
@@ -71,12 +103,44 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people
+    - name: Build ros2
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
         ./build-docker.sh -p navigation -i -w ros2
+
+  build-ros2-jetson:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Build ros2-jetson
+      run: | 
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-navigation
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
+        ./build-docker.sh -a aarch64 -p navigation -i -w ros2
 
   build-localization:
     runs-on: ubuntu-20.04
@@ -96,12 +160,44 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people
+    - name: Build localization
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
         ./build-docker.sh -p navigation -i -w localization
+
+  build-localization-jetson:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Build localization-jetson
+      run: | 
+        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-navigation
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
+        ./build-docker.sh -a aarch64 -p navigation -i -w localization
 
   build-ble-scan:
     runs-on: ubuntu-20.04
@@ -121,9 +217,41 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people
+    - name: Build ble-scan
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
         ./build-docker.sh -p navigation -i -w ble-scan
+
+  build-ble-scan-jetson:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Build ble-scan-jetson
+      run: | 
+        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        cd ./cabot
+        ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-navigation
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
+        ./build-docker.sh -a aarch64 -p navigation -i -w ble-scan
