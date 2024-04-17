@@ -23,9 +23,16 @@ jobs:
 
     - name: Build people
       run: | 
-        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-people
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
         ./build-docker.sh -p people -i -w people
 
   build-people-nuc:
@@ -48,9 +55,20 @@ jobs:
 
     - name: Build people-nuc
       run: | 
-        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-people
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../cabot-navigation
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
         ./build-docker.sh -p navigation -i -w people-nuc
 
   build-people-jetson:
@@ -105,9 +123,16 @@ jobs:
 
     - name: Build ros2
       run: | 
-        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-navigation
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
         ./build-docker.sh -p navigation -i -w ros2
 
   build-ros2-jetson:
@@ -162,9 +187,16 @@ jobs:
 
     - name: Build localization
       run: | 
-        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-navigation
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
         ./build-docker.sh -p navigation -i -w localization
 
   build-localization-jetson:
@@ -219,9 +251,16 @@ jobs:
 
     - name: Build ble-scan
       run: | 
-        git clone -b ros2 https://github.com/CMU-cabot/cabot
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../cabot-navigation
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../../
         ./build-docker.sh -p navigation -i -w ble-scan
 
   build-ble-scan-jetson:
