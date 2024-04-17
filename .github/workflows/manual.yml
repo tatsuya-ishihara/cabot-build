@@ -21,9 +21,6 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Check QEMU
-      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
-
     - name: Build cabot-people
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
@@ -48,9 +45,6 @@ jobs:
 
     - name: Install vcs
       run: pip3 install vcstool
-
-    - name: Check QEMU
-      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
 
     - name: Build cabot-people
       run: | 
@@ -77,9 +71,6 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Check QEMU
-      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
-
     - name: Build cabot-people
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
@@ -105,9 +96,6 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Check QEMU
-      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
-
     - name: Build cabot-people
       run: | 
         git clone -b ros2 https://github.com/CMU-cabot/cabot
@@ -132,9 +120,6 @@ jobs:
 
     - name: Install vcs
       run: pip3 install vcstool
-
-    - name: Check QEMU
-      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
 
     - name: Build cabot-people
       run: | 
