@@ -1,0 +1,10 @@
+name: Build Docker Image (Self Hosted)
+
+on: [ workflow_dispatch ]
+
+jobs:
+  hello:
+    runs-on: self-hosted
+
+    steps:
+      - run: echo 'Hello World!'
