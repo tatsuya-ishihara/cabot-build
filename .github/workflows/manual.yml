@@ -101,7 +101,6 @@ jobs:
         cd ./cabot-common
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../../
-        sed -i 's:make -j$(nproc):make -j3:' cabot-people/docker/opencv/Dockerfile.jetson
         ./build-docker.sh -a aarch64 -p people -i -w people
   
   build-ros2:
