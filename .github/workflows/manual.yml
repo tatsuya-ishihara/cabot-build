@@ -4,7 +4,7 @@ on: [ workflow_dispatch ]
 
 jobs:
   build-people:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -36,7 +36,7 @@ jobs:
         ./build-docker.sh -p people -i -w people
 
   build-people-nuc:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -72,7 +72,7 @@ jobs:
         ./build-docker.sh -p navigation -i -w people-nuc
 
   build-people-jetson:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -104,7 +104,7 @@ jobs:
         ./build-docker.sh -a aarch64 -p people -i -w people
   
   build-ros2:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -136,7 +136,7 @@ jobs:
         ./build-docker.sh -p navigation -i -w ros2
 
   build-ros2-jetson:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -168,7 +168,7 @@ jobs:
         ./build-docker.sh -a aarch64 -p navigation -i -w ros2
 
   build-localization:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -200,7 +200,7 @@ jobs:
         ./build-docker.sh -p navigation -i -w localization
 
   build-localization-jetson:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -232,7 +232,7 @@ jobs:
         ./build-docker.sh -a aarch64 -p navigation -i -w localization
 
   build-ble-scan:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
@@ -264,7 +264,7 @@ jobs:
         ./build-docker.sh -p navigation -i -w ble-scan
 
   build-ble-scan-jetson:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
