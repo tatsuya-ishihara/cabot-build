@@ -86,6 +86,6 @@ jobs:
       run: | 
         ./build-docker.sh -a aarch64 -i　navigation
 
-    - name: Build localization-jetson (build image)
+    - name: Build localization-jetson (build workspace)
       run: | 
         ./build-docker.sh -a aarch64 -w localization
