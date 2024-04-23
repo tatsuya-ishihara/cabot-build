@@ -77,7 +77,7 @@ jobs:
         cd ./cabot-common
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../../
-        ./build-docker.sh -p people -i -w people
+        ./build-docker.sh -p people -i -w people -c realsense
 
   build-people-nuc:
     runs-on: ubuntu-20.04
@@ -157,7 +157,7 @@ jobs:
         cd ./cabot-common
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../../
-        ./build-docker.sh -p navigation -i -w people-nuc
+        ./build-docker.sh -p navigation -i -w people-nuc -c realsense
 
   build-people-jetson:
     runs-on: ubuntu-20.04
@@ -234,7 +234,7 @@ jobs:
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../../
         sed -i "s:make -j\$(nproc):make:" cabot-people/docker/opencv/Dockerfile.jetson
-        ./build-docker.sh -a aarch64 -p people -i -w people
+        ./build-docker.sh -a aarch64 -p people -i -w people -c realsense
   
   build-ros2:
     runs-on: ubuntu-20.04
