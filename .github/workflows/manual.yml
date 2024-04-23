@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build Docker Image (people, people-nuc, people-jetson, ros2, ros2-jetson, localization, localization-jetson, ble-scan, ble-scan-jetson)
 
 on: [ workflow_dispatch ]
 
