@@ -86,7 +86,7 @@ jobs:
     - name: Build localization-jetson (build image)
       run: | 
         cd ./cabot
-        ./build-docker.sh -a aarch64 -i　navigation
+        ./build-docker.sh -a aarch64 -i　localization
 
     - name: Build localization-jetson (build workspace)
       run: | 
