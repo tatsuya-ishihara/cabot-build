@@ -65,7 +65,7 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build localization-jetson
+    - name: Build localization-jetson (checkout)
       run: | 
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot
         cd ./cabot
@@ -77,4 +77,15 @@ jobs:
         cd ./cabot-common
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../../
-        ./build-docker.sh -a aarch64 -p navigation -i -w localization
+
+    - name: Build localization-jetson (prebuild)
+      run: | 
+        ./build-docker.sh -a aarch64 -p navigation
+
+    - name: Build localization-jetson (build image)
+      run: | 
+        ./build-docker.sh -a aarch64 -i　navigation
+
+    - name: Build localization-jetson (build image)
+      run: | 
+        ./build-docker.sh -a aarch64 -w localization
